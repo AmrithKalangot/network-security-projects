@@ -1,0 +1,11 @@
+# ============================================================================
+# CUSTOM SURICATA RULES FOR SOAR PIPELINE
+# ============================================================================
+
+# 1. NMAP OS Detection Probe (With Hardcoded Rate Limit)
+# Detects Nmap OS scanning while limiting alerts to 1 per minute, per source IP to prevent n8n webhook flooding.
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"ET SCAN NMAP OS Detection Probe"; flow:stateless; flags:S,12; threshold: type limit, track by_src, count 1, seconds 60; classtype:attempted-recon; sid:2000499; rev:5;)
+
+# 2. ICMP Flood Detection (With Hardcoded Rate Limit)
+# Detects excessive ping sweeps/floods from a single attacker IP.
+alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"CUSTOM ICMP Flood / Ping Sweep Detected"; itype:8; threshold: type limit, track by_src, count 1, seconds 60; classtype:misc-activity; sid:1000001; rev:1;)
