@@ -36,6 +36,3 @@ After successfully updating the firewall group, active attacker ping sessions co
 * `/n8n-workflow/` - Contains the exported `.json` logic of the SOAR automation.
 * `/suricata-config/` - Contains the custom `.rules` and `threshold.config` files used for rate-limiting.
 * `/docs/` - Contains network topology diagrams and full project PDF documentation.
-
-## 📸 Project Screenshots
-*(Add your screenshots here using Markdown image tags, e.g., `![Discord Alert](docs/discord_alert.png)`)*
